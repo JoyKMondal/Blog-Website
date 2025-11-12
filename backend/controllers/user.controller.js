@@ -4,35 +4,12 @@ const { validationResult } = require("express-validator");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const { v4: uuidv4 } = require("uuid");
-// const aws = require("aws-sdk");
 
 const { getAuth } = require("firebase-admin/auth");
 
 const HttpError = require("../models/http-error");
-// const User = require("../models/user.model");
 const Users = require("../models/users.model");
 const Notification = require("../models/notification.model");
-
-// const s3 = new aws.S3({
-//   region: "ap-south-1",
-//   accessKeyId: process.env.AWS_ACCESS_KEY,
-//   secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-// });
-
-// const generateUploadURL = async () => {
-//   const date = new Date();
-//   const imageName = `${uuidv4()}-${date.getTime()}.jpeg`;
-//   console.log("Bucket:", "mern-blog-app-mondal");
-//   console.log("Key:", imageName);
-//   console.log("AWS Region:", s3.config.region);
-
-//   return await s3.getSignedUrlPromise("putobject", {
-//     Bucket: "mern-blog-app-mondal",
-//     Key: imageName,
-//     Expires: 2000,
-//     ContentType: "image/jpeg",
-//   });
-// };
 
 const signup = async (req, res, next) => {
   const errors = validationResult(req);
@@ -317,24 +294,6 @@ const googleAuth = async (req, res, next) => {
     });
 };
 
-const getUploadUrl = async (req, res, next) => {
-  try {
-    const url = await generateUploadURL();
-    console.log(url);
-    res.status(200).json({ uploadURL: url });
-  } catch (err) {
-    console.log(err, "error");
-    return next(new HttpError(err.message, 500));
-  }
-
-  // generateUploadURL()
-  //   .then((url) => res.status(200).json({ uploadURL: url }))
-  //   .catch((err) => {
-  //     console.log(err, "error");
-  //     return next(new HttpError(err.message, 500));
-  //   });
-};
-
 const updatePassword = async (req, res, next) => {
   const errors = validationResult(req);
 
@@ -606,7 +565,6 @@ exports.signup = signup;
 exports.login = login;
 exports.getUserById = getUserById;
 exports.googleAuth = googleAuth;
-// exports.getUploadUrl = getUploadUrl;
 exports.getUserProfile = getUserProfile;
 exports.updatePassword = updatePassword;
 exports.updateProfileImage = updateProfileImage;
