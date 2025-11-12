@@ -8,7 +8,6 @@ const Tag = ({ tag, tagIndex }) => {
 
   const handleTagdelete = () => {
     tags = tags.filter((t) => t !== tag);
-    console.log(tags)
     setBlog({ ...blog, tags });
   };
 

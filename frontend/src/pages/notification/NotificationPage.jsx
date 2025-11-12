@@ -49,8 +49,6 @@ const NotificationPage = () => {
     fetchNotifications();
   }, [activeButton, token, loggedInUser, setLoggedInUser, newNotification]);
 
-  console.log(notifications, "notifications");
-
   return (
     <div className="w-full mx-auto px-10">
       <h1 className="max-md:hidden my-4 text-2xl font-inter font-semibold">

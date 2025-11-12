@@ -80,9 +80,6 @@ const SearchPage = () => {
     }
   };
 
-  console.log(blogs, "blogs");
-  console.log(users, "users");
-
   return (
     <div className="search-section h-cover flex justify-center gap-10">
       <div className="w-full md:w-3/5">
