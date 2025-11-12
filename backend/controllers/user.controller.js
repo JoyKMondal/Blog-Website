@@ -6,11 +6,6 @@ const jwt = require("jsonwebtoken");
 const { v4: uuidv4 } = require("uuid");
 // const aws = require("aws-sdk");
 
-// joykumar   // username, bucket name
-// joykumar@123 // password
-// AKIAYS2NTWE2RQPF2EP2 // secret key
-// 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 // secret access key
-
 const { getAuth } = require("firebase-admin/auth");
 
 const HttpError = require("../models/http-error");
